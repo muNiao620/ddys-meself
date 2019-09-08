@@ -1,17 +1,20 @@
 <template>
   <div>
     <HomeSwiper :swiperList="swiperList"/>
+    <HomeContent/>
   </div>
 </template>
 
 <script>
 import HomeSwiper from './components/Swiper'
+import HomeContent from './components/Content'
 // 导入axios
 import axios from 'axios'
 export default {
   name: 'Home',
   components: {
-  	HomeSwiper
+  	HomeSwiper,
+  	HomeContent
   },
   data () {
   	return {

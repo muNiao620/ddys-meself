@@ -2,7 +2,7 @@
 	<div class="main">
 		<div class="banner">
 			<div class="wrapper">
-				<swiper :options="swiperOption">
+				<swiper :options="swiperOption" v-if="showSwiper">
 				    <swiper-slide
 				    	v-for="(item, index) of swiperList"
 				    	:key="index">
@@ -28,6 +28,11 @@ export default {
   name: 'HomeSwiper',
   props: {
   	swiperList: Array
+  },
+  computed: {
+    showSwiper () {
+      return this.swiperList.length
+    }
   },
   data () {
   	return {

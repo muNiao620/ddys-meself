@@ -1,18 +1,16 @@
 <template>
-	<div>
-		<div class="content">
-			<div
-				class="content-img"
-				v-for="(item, index) of items"
-				:key="index">
-				<div class="icon">
-					<img
-						class="img" 
-						:src="item.typePic">
-				</div>
-				<div class="content-text">
-					{{item.typeName}}
-				</div>
+	<div class="content">
+		<div
+			class="content-img"
+			v-for="(item, index) of items"
+			:key="index">
+			<div class="icon">
+				<img
+					class="img" 
+					:src="item.typePic">
+			</div>
+			<div class="content-text">
+				{{item.typeName}}
 			</div>
 		</div>
 	</div>
@@ -37,6 +35,7 @@ export default {
 <style lang="stylus" scoped>
 	.content
 		width: 100%
+		height: 2.02rem
 		.content-img
 			float: left
 			width: 25%

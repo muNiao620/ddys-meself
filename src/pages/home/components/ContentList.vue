@@ -28,14 +28,15 @@ export default {
 
 <style lang="stylus" scoped>
   .container
-    padding: .2rem 0
+    padding-top: .2rem
     .contents
       margin-top: .1rem
       height: 1.48rem
       .content
         width: 25%
-        text-align: center
+        // text-align: center
         float: left
+        // display: flex
         .content-text
           margin: .1rem .07rem .1rem .15rem
           text-align: center

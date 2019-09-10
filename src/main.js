@@ -12,6 +12,11 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 //引入iconfont库
 import './assets/styles/iconfont.css'
+// 导入vantui插件
+import { Tab, Tabs } from 'vant'
+Vue.use(Tab).use(Tabs)
+import 'vant/lib/tabs/style'
+import 'vant/lib/tab/style'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)

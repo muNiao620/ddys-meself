@@ -2,12 +2,22 @@
   <div>
   	<div class="header">
   		<div class="wrapper">
-  			<div class="organize">机构<span class="iconfont back-icon">&#xe612;</span>
+  			<div
+  				class="organize"
+  				@click="showListClick">机构<span class="iconfont back-icon">&#xe612;</span>
 		    </div>
 		    <span class="iconfont location">&#xe651;</span>
 		    <input class="organizeInput" placeholder="搜索机构、套餐">
 		    </input>
-		    <div class="cancle">取消</div>
+		    <router-link to="/">
+		    	<div class="cancle">取消</div>
+				</router-link>
+				<div
+					class="wrapperShow"
+					v-show="show">
+					<div class="showList">机构</div>
+					<div class="showList">套餐</div>
+				</div>
   		</div>
 	  </div>
 	  <!-- vantui插件的使用 -->
@@ -22,7 +32,17 @@
 </template>
 <script>
 export default {
-  name: 'SearchHeader'
+  name: 'SearchHeader',
+  data () {
+  	return {
+  		show: false
+  	}
+  },
+  methods: {
+  	showListClick () {
+  		this.show = !this.show
+  	}
+  }
 }
 </script>
 
@@ -58,4 +78,12 @@ export default {
 				padding: 0 .2rem
 				font-size: .3rem
 				color: #ffa052
+			.wrapperShow
+				position: absolute
+				padding: 0 .25rem
+				background-color: #fff
+				top: .8rem
+				border-radius: .3rem
+				.showList
+					padding: .2rem 0
 </style>

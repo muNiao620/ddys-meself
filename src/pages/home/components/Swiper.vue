@@ -14,11 +14,13 @@
 				</swiper>
 			</div>
 		</div>
-		<div class="header">
-			<div class="swiper-input">
-				<span class="iconfont back-icon">&#xe651;</span>机构/套餐
+		<router-link to="/Search">
+			<div class="header">
+				<div class="swiper-input">
+					<span class="iconfont back-icon">&#xe651;</span>机构/套餐
+				</div>
 			</div>
-		</div>
+		</router-link>
 	</div>
   
 </template>
@@ -69,6 +71,7 @@ export default {
 	width: 100%
 	top: .3rem
 	margin-top: .2rem
+	color: #333
 	.swiper-input
 		background-color: rgba(255,255,255,0.6)
 		width: 85%

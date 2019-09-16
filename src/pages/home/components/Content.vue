@@ -3,7 +3,8 @@
 		<div
 			class="content-img"
 			v-for="(item, index) of items"
-			:key="index">
+			:key="index"
+			@click="junmpTo(index)">
 			<div class="icon">
 				<img
 					class="img" 
@@ -27,6 +28,20 @@ export default {
 				{typePic:require('../../../images/jkbk.png'),typeName:'健康自测'},
 				{typePic:require('../../../images/people.png'),typeName:'我的体检'}
 			],
+  	}
+  },
+  methods: {
+  	junmpTo (index) {
+  		if (index == 0) {
+  			this.$router.push('/OrgHome')
+  		}
+  		if (index == 2) {
+  			window.location.href="https://ddys-wechat.diandianys.com/WeChat/jkbk/#/test?test=1"
+  		}
+  		if (index == 3) {
+  			this.$router.push('/Login')
+  		}
+  		console.log(index)
   	}
   }
 }

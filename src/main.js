@@ -14,10 +14,16 @@ import 'swiper/dist/css/swiper.css'
 import './assets/styles/iconfont.css'
 // 导入vantui插件
 import { Tab, Tabs ,Search} from 'vant'
-Vue.use(Tab).use(Tabs).use(Search)
+import { Sidebar, SidebarItem } from 'vant'
+Vue.use(Tab).use(Tabs).use(Search).use(Sidebar).use(SidebarItem)
 import 'vant/lib/tabs/style'
 import 'vant/lib/tab/style'
 import 'vant/lib/search/style'
+import 'vant/lib/sidebar/style'
+import 'vant/lib/sidebar-item/style'
+// 导入scrollload插件
+// import Scrollload from 'Scrollload'
+// import scrollLoad from './assets/styles/scrollLoad.js'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)

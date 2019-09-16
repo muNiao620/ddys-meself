@@ -40,7 +40,10 @@ export default {
   	return {
   		swiperOption: {
   			pagination: ".swiper-pagination",
-  			loop: true
+  			// 自动循环
+  			loop: true,
+  			// 自动播放
+  			autoplay: 3000,
   		}
   	}
   }

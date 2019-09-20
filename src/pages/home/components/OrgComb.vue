@@ -100,7 +100,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '../../../assets/styles/mixins.styl'
+@import '~styles/mixins.styl'
 .orgComb
   >>>.van-tabs__nav
     display block
@@ -110,7 +110,7 @@ export default {
       padding 0 10px
       display inline-block
     .van-tab--active
-      color: #ffa052
+      color: $bgColor
   .sort
     height: .82rem
     // background: red
@@ -158,7 +158,7 @@ export default {
           min-width: 0
           .orderNum
             margin: 0 0 0 .3rem
-            color: #ffa052
+            color: $bgColor
         .location
           font-size: .24rem
           line-height: .3rem

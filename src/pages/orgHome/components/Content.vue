@@ -53,7 +53,6 @@ export default {
       showComb: false,
       orgList: [],
       touchStatus: false,
-      
 
       list: [],
       loading: false,
@@ -114,7 +113,6 @@ export default {
   mounted () {
     this.obj.gbCityCode = '330100'
   	this.scrollRequire(this.obj)
-
   },
   watch: {
   	infoId () {
@@ -142,7 +140,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '../../../assets/styles/mixins.styl'
+// styles是在webpack.base.conf.js定义的路径变量，在样式中引用样式，前面需要加波浪线
+@import '~styles/mixins.styl'
+@import '~styles/varibles.styl'
 .orgComb
   >>>.van-tabs__nav
     display block
@@ -152,7 +152,7 @@ export default {
       padding 0 10px
       display inline-block
     .van-tab--active
-      color: #ffa052
+      color: $bgColor
   .organize
     padding-left: .3rem
     .wrapperOut
@@ -190,7 +190,7 @@ export default {
           min-width: 0
           .orderNum
             margin: 0 0 0 .3rem
-            color: #ffa052
+            color: $bgColor
         .location
           font-size: .24rem
           line-height: .3rem

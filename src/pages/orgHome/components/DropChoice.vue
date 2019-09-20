@@ -35,7 +35,7 @@
 	  		class="content"
 	  		v-for="(item, index) of orgType"
 	  		:key="index"
-	  		@click="orgClick">
+	  		@click="orgClick(item)">
 	  		{{item.typeName}}
 	  	</div>
 		</div>
@@ -47,7 +47,7 @@
 	  		class="content"
 	  		v-for="(item, index) of sortWay"
 	  		:key="index"
-	  		@click="sortClick">
+	  		@click="sortClick(item)">
 	  		{{item.sortName}}
 	  	</div>
 		</div>
@@ -58,6 +58,7 @@ export default {
   name: 'OrgDropChoice',
   data () {
   	return {
+  		// show: false,
   		cityIndex: 0,
   		regionInfoList: [],
   		changeSelectStyle:'',
@@ -101,7 +102,7 @@ export default {
   	},
   	cityClick (index, item) {
   		this.cityId = item.cityId
-			this.regionInfoList = this.cityInfoList[index].regionList
+		this.regionInfoList = this.cityInfoList[index].regionList
   	},
   	// 未点击渲染杭州区域
   	noClick () {
@@ -112,15 +113,27 @@ export default {
   		this.changeSelectStyle = index
   	},
   	regionClick (item) {
+  		// this.$store.dispatch('changeRegion', region.regionName)
   		// console.log(item.regionId)
   		this.$emit('changeRegionValue', item.regionName, item.regionId , this.cityId)
+  		// this.$emit('changeRegionValue', item.regionName)
+  		// this.$store.dispatch('changeInfo', item.regionId , this.cityId)
   	},
-  	orgClick (e) {
-  		this.$emit('changeOrgValue', e.target.innerText)
+  	// 之前的传值方法
+  	// regionClick (item) {
+  		
+  	// 	// console.log(item.regionId)
+  	// 	this.$emit('changeRegionValue', item.regionName, item.regionId , this.cityId)
+  	// },
+  	orgClick (item) {
+  		// console.log(item)
+  		// this.$store.dispatch('changeOrg', org.typeName)
+  		this.$emit('changeOrgValue', item.typeName)
   		// console.log(e)
   	},
-  	sortClick (e) {
-  		this.$emit('changeSortValue', e.target.innerText)
+  	sortClick (item) {
+  		// this.$store.dispatch('changeRecommend', sort.sortName)
+  		this.$emit('changeSortValue', item.sortName)
   	}
   },
   mounted () {

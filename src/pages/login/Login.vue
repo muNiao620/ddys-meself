@@ -14,18 +14,23 @@
     </div>
     <!-- tab切换 -->
     <div >
-      <van-tabs @click="change">
-        <van-tab title="身份证登录" name="a"></van-tab>
-        <van-tab title="手机号登录" name="b"></van-tab>
+      <van-tabs v-model="tabIdx" @change="loginName = ''">
+        <van-tab title="身份证登录"></van-tab>
+        <van-tab title="手机号登录"></van-tab>
       </van-tabs>
     </div>
     <!-- input -->
     <div class="inputBox">
-      <input class="idnetyInput" type="text" placeholder="请输入身份证号">
+      <input 
+        v-model="loginName"
+        class="idnetyInput" 
+        type="text" 
+        :placeholder="tabIdx===0?'请输入身份证':'请输入手机号'" >
       <div class="pwdBox">
-        <input class="pwdInput" type="password" placeholder="请输入密码">
-        <span class="iconfont eye-icon
-        ">&#xe6b1;</span>
+        <input class="pwdInput" type="password" placeholder="请输入验证码">
+        <div class="code" @click="getCode">获取验证码</div>
+        <!-- <span class="iconfont eye-icon
+        ">&#xe6b1;</span> -->
       </div>
     </div>
     <!-- 登录按钮 -->
@@ -39,19 +44,25 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Login',
   data () {
     return {
-      activeName: 'a'
+      tabIdx: 0,
+      loginName: '',
     }
   },
   methods: {
-    change (e) {
-      if (e == 'a') {
-        document.getElementsByClassName('idnetyInput')[0].placeholder = '请输入身份证号'
-      }else{
-        document.getElementsByClassName('idnetyInput')[0].placeholder = '请输入手机号'
+    getCode () {
+      if(this.tabIdx === 1){
+        axios.post('https://api.xiaoyilan.com/api/message/getCode', {
+          mobile: this.loginName,
+          type: 'login',
+        }).then(res => {
+          console.log(res.data)
+        })
+        // console.log(this.loginName)
       }
     }
   }
@@ -59,6 +70,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+// 引入样式公共变量
+@import '../../assets/styles/varibles.styl'
 .border-bottom
     &:before
       background-color: #eee
@@ -86,24 +99,41 @@ export default {
     background-color: #ffa052
   .inputBox
     text-align: center
-    .idnetyInput, .pwdInput
-      height: .6rem
-      width: 80%
-      text-indent: .3rem
-      margin: .5rem .72rem .1rem 
-      background-color: #eee
-      border-radius: .15rem
+    .idnetyInput
+        height: .6rem
+        width: 80%
+        text-indent: .3rem
+        margin: .5rem .72rem .1rem 
+        background-color: #eee
+        border-radius: .15rem
     .pwdBox
-      position: relative
-      .eye-icon
-        position: absolute
-        right: 13%
-        top: 50%
+      display: flex
+      .pwdInput
+        height: .6rem
+        width: 54%
+        text-indent: .3rem
+        margin: .5rem .2rem .1rem .72rem
+        background-color: #eee
+        border-radius: .15rem
+      .code
+        text-align: center
+        height: .6rem
+        line-height: .6rem
+        width: 26%
+        margin: .5rem .72rem .1rem  .5rem
+        background-color: $bgColor
+        border-radius: .15rem
+    // .pwdBox
+    //   position: relative
+    //   .eye-icon
+    //     position: absolute
+    //     right: 13%
+    //     top: 50%
   .button
     height: .8rem
     line-height: .8rem
     margin: .5rem .72rem .1rem
-    background-color: #ffa052
+    background-color: $bgColor
     color: #fff
     text-align: center
     font-size: .4rem
@@ -113,9 +143,9 @@ export default {
     line-height: .76rem
     margin: .3rem .72rem
     .regis
-      color: #ffa052
+      color: $bgColor
       float: left
     .forgetPwd
-      color: #ffa052
+      color: $bgColor
       float: right
 </style>

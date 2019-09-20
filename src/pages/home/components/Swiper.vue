@@ -31,6 +31,7 @@ export default {
   props: {
   	swiperList: Array
   },
+  // 判断请求数据数据是否传过来，没有就不显示swiper标签内容内容，有的话就显示传过来的第一页
   computed: {
     showSwiper () {
       return this.swiperList.length
@@ -52,10 +53,11 @@ export default {
 
 <style lang="stylus" scoped>
 .wrapper >>> .swiper-pagination-bullet-active
-	background: #ffa052
+	background: $bgColors
 .banner
 	margin: .3rem
 	.wrapper
+		// 直接写宽高的具体大小，可能浏览器的兼容性有问题
 		width: 100%
 		height: 0
 		padding-bottom: 46.9%

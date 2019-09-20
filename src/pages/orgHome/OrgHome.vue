@@ -47,8 +47,6 @@ export default {
         res = res.data
         if (res) {
           this.cityInfoList = res.list
-          // console.log(this.regionInfoList)
-          // console.log(res.list)
         }
       })
     },
@@ -65,14 +63,9 @@ export default {
         sortWay: "1",
         spid: "1001",
       }).then( res => {
-        // console.log(res)
         res = res.data
-        // console.log(res)
         if (res) {
-          // console.log(res)
-          // console.log(1)
           this.orgList = res.obj.list
-          // console.log(this.cityInfoList)
         }
       })
     },

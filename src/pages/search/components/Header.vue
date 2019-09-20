@@ -62,12 +62,14 @@ export default {
 				padding: 0 .2rem
 				font-size: .3rem
 			.organizeInput
+				// box-sizing同时和padding使用，使得搜索范围在盒子内
+				box-sizing: border-box
 				flex: 1
 				line-height: .56rem
 				background-color: #ededed
 				border-radius: 0 .3rem .3rem 0
-				text-indent: .74rem
 				font-size: .26rem
+				padding: 0 .2rem 0 .6rem
 			.location
 				position: absolute
 				left: 1.9rem

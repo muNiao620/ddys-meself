@@ -1,14 +1,17 @@
 <template>
 	<div>
-		<div class="drop">
+		<div 
+			class="drop"
+			ref="wrapper">
 			<!-- 上下箭头切换 -->
 			<div
 				class="content1"
 				@click="change(1)"
-				style="color: #000"
 				:class="{'primary': index===1}"
-				>
-				<span class="regionText">所在地区</span>
+				ref="regionName"
+			>
+				<span 
+					class="regionText">所在地区</span>
 				<span
 					class="iconfont"
 					v-show="index!==1">&#xe62e;</span>
@@ -19,8 +22,11 @@
 			<div
 				class="content2"
 				@click="change(2)"
-				:class="{'primary': index===2}">
-				<span class="orgText">选择机构</span>
+				:class="{'primary': index===2}"
+				ref="orgName">
+				<span
+					class="orgText"
+					>选择机构</span>
 				<span
 					class="iconfont"
 					v-show="index!==2">&#xe62e;</span>
@@ -30,7 +36,9 @@
 			</div>
 			<div
 				class="content3"
-				@click="change(3)">
+				@click="change(3)"
+				:class="{'primary': index===3}"
+				ref="sortName">
 				<span class="sortText">默认推荐</span>
 				<span
 					class="iconfont"
@@ -47,7 +55,7 @@
 				:cityInfoList="cityInfoList"
 				:nameValue = "nameValue"
 				:nameListIndex="nameListIndex"
-				@changeRegionValue="changeRegionNmae"
+				@changeRegionValue="changeRegionName"
 				@changeOrgValue="changeOrgName"
 				@changeSortValue="changeSortName"/>
 		</div>
@@ -81,39 +89,62 @@ export default {
   	change (num) {
   		if (this.index == num) {
   			this.show = false
-				this.index=0
 				// 点击时字体颜色的改变
-				document.getElementsByClassName('content'+[num])[0].style.color = '#000'
+				if (this.index == 1) {
+					this.$refs.regionName.style.color = '#000'
+				}
+				if (this.index == 2) {
+					this.$refs.orgName.style.color = '#000'
+				}
+				if (this.index == 3) {
+					this.$refs.sortName.style.color = '#000'
+				}
+				// document.getElementsByClassName('content'+[num])[0].style.color = '#000'
+				this.index=0
 				this.nameList[num-1] = false
-  		}else{
+  		}else {
 				this.index=num
+				if (this.index == 1) {
+					this.$refs.regionName.style.color = '#ffa052'
+					this.$refs.orgName.style.color = '#000'
+					this.$refs.sortName.style.color = '#000'
+				}
+				if (this.index == 2) {
+					this.$refs.regionName.style.color = '#000'
+					this.$refs.orgName.style.color = '#ffa052'
+					this.$refs.sortName.style.color = '#000'
+				}
+				if (this.index == 3) {
+					this.$refs.regionName.style.color = '#000'
+					this.$refs.orgName.style.color = '#000'
+					this.$refs.sortName.style.color = '#ffa052'
+				}
 				this.show = true
-				document.getElementsByClassName('content'+[num])[0].style.color = '#ffa052'
+				// document.getElementsByClassName('content'+[num])[0].style.color = '#ffa052'
 				this.nameList[num-1] = true
 				this.nameListIndex = num-1
 				this.nameValue = this.nameList[num-1]
-				// console.log(typeof(this.nameListIndex))
 			}
   	},
   	// 点击区域改变文本和文本颜色
-  	changeRegionNmae (info, regionId, cityId) {
+  	changeRegionName (info, regionId, cityId) {
   		this.$emit('regionId', regionId, cityId)
-  		document.getElementsByClassName('regionText')[0].innerText = info
-  		document.getElementsByClassName('content'+[this.index])[0].style.color = '#000'
+  		this.$refs.regionName.firstChild.innerText = info
+  		this.$refs.regionName.style.color = '#000'
   		// 隐藏和显示背景框
   		this.show = false
   		this.index=0
   	},
   	changeOrgName (info) {
   		// console.log(info)
-  		document.getElementsByClassName('orgText')[0].innerText = info
-  		document.getElementsByClassName('content'+[this.index])[0].style.color = '#000'
+  		this.$refs.orgName.firstChild.innerText = info
+  		this.$refs.orgName.style.color = '#000'
   		this.show = false
   		this.index=0
   	},
   	changeSortName (info) {
-  		document.getElementsByClassName('sortText')[0].innerText = info
-  		document.getElementsByClassName('content'+[this.index])[0].style.color = '#000'
+  		this.$refs.sortName.firstChild.innerText = info
+  		this.$refs.sortName.style.color = '#000'
   		this.show = false
   		this.index=0
   	}

@@ -2,7 +2,8 @@
 	<div>
 		<div 
 			class="drop"
-			ref="wrapper">
+			ref="wrapper"
+			@touchmove.prevent>
 			<!-- 上下箭头切换 -->
 			<div
 				class="content1"
@@ -157,7 +158,8 @@ export default {
 
 <style lang="stylus" scoped>
 	.showBg
-		position: fixed
+		position: absolute
+		// top: 15%
 		height: 100%
 		width: 100%
 		z-index: 1

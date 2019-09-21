@@ -30,7 +30,8 @@
 		<!-- 机构列表 -->
 		<div
 			class="orgList border-top"
-			v-show="orgContent">
+			v-show="orgContent"
+			@touchmove.prevent>
 	  	<div
 	  		class="content"
 	  		v-for="(item, index) of orgType"
@@ -42,7 +43,8 @@
 		<!-- 推荐列表 -->
 		<div
 			class="sortList border-top"
-			v-show="sortContent">
+			v-show="sortContent"
+			@touchmove.prevent>
 	  	<div
 	  		class="content"
 	  		v-for="(item, index) of sortWay"

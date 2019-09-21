@@ -1,6 +1,7 @@
 <template>
   <div>
-		<div class="header border-bottom">
+		<div class="header border-bottom"
+		@touchmove.prevent>
 			<router-link
 				to="/"
 				class="iconfont back-icon">&#xe624;

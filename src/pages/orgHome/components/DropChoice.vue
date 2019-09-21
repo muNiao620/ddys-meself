@@ -201,6 +201,7 @@ export default {
 .orgList
 		overflow-y: auto
 		background-color: #fff
+		z-index: 2
 		.content
 			text-align: center
 			padding: .2rem 0
@@ -212,6 +213,7 @@ export default {
 .sortList
 		overflow-y: auto
 		background-color: #fff
+		z-index: 2
 		.content
 			text-align: center
 			padding: .2rem 0

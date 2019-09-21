@@ -50,7 +50,9 @@
 			<!-- <div class="showBg" v-show="show"></div> -->
 		</div>
 		<!-- @touchmove.prevent是防止移动遮罩层时，下一层的页面会移动 -->
-		<div class="showBg" v-show="show" @touchmove.prevent>
+		<div class="showBg" v-show="show" >
+			<div class="showBg1" @touchmove.prevent>
+			</div>
 			<OrgDropChoice
 				:cityInfoList="cityInfoList"
 				:nameValue = "nameValue"
@@ -59,6 +61,7 @@
 				@changeOrgValue="changeOrgName"
 				@changeSortValue="changeSortName"/>
 		</div>
+		
   </div>
 </template>
 <script>
@@ -154,11 +157,12 @@ export default {
 
 <style lang="stylus" scoped>
 	.showBg
-		position: fixed
-		height: 100%
-		width: 100%
-		background-color: #00000080
-		z-index: 1
+		.showBg1
+			position: fixed
+			height: 100%
+			width: 100%
+			background-color: #00000080
+			z-index: 1
 	.drop
 		position: relative
 		display: flex

@@ -157,6 +157,10 @@ export default {
 
 <style lang="stylus" scoped>
 	.showBg
+		position: fixed
+		height: 100%
+		width: 100%
+		z-index: 1
 		.showBg1
 			position: fixed
 			height: 100%

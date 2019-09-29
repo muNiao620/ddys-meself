@@ -50,7 +50,6 @@ export default {
         sign: "3f52f63fad63c5dd209d28420977fb5d",
         spid: "1001",
       }).then( res => {
-        console.log(res)
           res = res.data
           if (res) {
             this.swiperList = res.adSettingList

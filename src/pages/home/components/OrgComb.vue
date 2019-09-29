@@ -17,7 +17,8 @@
         class="wrapper"
         v-for="(item, index) of orgList"
         :key="index"
-        v-if='index<5'>
+        v-if='index<5'
+        @click="getId(item)">
         <div class="one">
           <div class="introduce">
             {{item.typeName}}
@@ -94,6 +95,11 @@ export default {
         this.showOrg = false,
         this.showComb = true
       }
+    },
+    getId (item) {
+      this.$store.dispatch('changeId', item.id)
+      this.$router.push('/OrgDetail/'+item.id)
+      // console.log(item.id)
     }
   }
 }

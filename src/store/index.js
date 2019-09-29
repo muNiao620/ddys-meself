@@ -5,18 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		cityId: '330100',
-		regionId: ''
+		orgId: '9',
 	},
 	actions: {
-		changeInfo (rgx, cityId, regionId) {
-			rgx.commit('change', cityId, regionId)
+		changeId (idx, orgId) {
+			idx.commit('change', orgId)
 		},
 	},
 	mutations: {
-		change (state, cityId, regionId) {
-			state.cityId = cityId,
-			state.regionId = regionId
+		change (state, orgId) {
+			state.orgId = orgId
+			// console.log(state.orgId)
 		},
 	}
 })

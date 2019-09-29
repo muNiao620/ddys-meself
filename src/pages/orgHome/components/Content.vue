@@ -13,6 +13,7 @@
 		        class="wrapperOut"
 		        v-for="(item, index) of orgList"
 		        :key="index"
+            @click="getId(item)"
 		        >
 		        <div class="one">
 		          <div class="introduce">
@@ -108,6 +109,11 @@ export default {
             this.finished = true
           }
       }, 1000)
+    },
+    getId (item) {
+      this.$store.dispatch('changeId', item.id)
+      this.$router.push('/OrgDetail/'+item.id)
+      // console.log(item.id)
     }
   },
   mounted () {
